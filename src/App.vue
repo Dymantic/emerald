@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  background: url("../images/homepage_banner_marble.jpg");
+  background: url("./assets/images/homepage_banner_marble.jpg");
   background-position-y: 100%;
   background-size: cover;
   background-repeat: no-repeat;

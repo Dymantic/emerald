@@ -148,7 +148,6 @@ export default {
 
   methods: {
     handleKey({ key }) {
-      console.log(key);
       switch (key) {
         case "ArrowRight":
           this.showLightBox && this.showNext();

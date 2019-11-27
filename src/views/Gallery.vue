@@ -1,9 +1,9 @@
 <template>
-  <div class="h-full relative">
-    <router-link to="/" class="p-6 block">
-      <full-logo class="text-black hover:text-red-500 h-8"></full-logo>
+  <div class="h-full relative flex flex-col justify-center items-center">
+    <router-link to="/" class="p-6 block absolute top-0 left-0">
+      <full-logo class="text-black hover:text-deep_green h-8"></full-logo>
     </router-link>
-    <div class="gallery-grid max-w-4xl mx-auto mt-20">
+    <div class="gallery-grid max-w-4xl mx-auto mt-20 lg:mt-0">
       <div v-for="(img, index) in images" :key="index" class="bg-black">
         <transition name="fade">
           <img
@@ -17,21 +17,16 @@
         </transition>
       </div>
       <div class="bg-black h-full flex justify-center items-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 42.5 20"
-          class="fill-current text-white hover:text-red-500 w-4/5"
-          @click="setLightBox(imageCount)"
-        >
-          <path
-            d="M19.87 5H.13A.13.13 0 0 1 0 4.87V.13A.13.13 0 0 1 .13 0h19.74a.13.13 0 0 1 .13.13v4.74a.13.13 0 0 1-.13.13M19.87 12.5H.13a.13.13 0 0 1-.13-.13V7.63a.13.13 0 0 1 .13-.13h19.74a.13.13 0 0 1 .13.13v4.74a.13.13 0 0 1-.13.13M19.87 20H.13a.13.13 0 0 1-.13-.13v-4.74A.13.13 0 0 1 .13 15h19.74a.13.13 0 0 1 .13.13v4.74a.13.13 0 0 1-.13.13M37.5 19.87V.13a.13.13 0 0 1 .13-.13h4.74a.13.13 0 0 1 .13.13v19.74a.13.13 0 0 1-.13.13h-4.74a.13.13 0 0 1-.13-.13M30 19.87V.13a.13.13 0 0 1 .13-.13h4.74a.13.13 0 0 1 .13.13v19.74a.13.13 0 0 1-.13.13h-4.74a.13.13 0 0 1-.13-.13M22.5 19.87V.13a.13.13 0 0 1 .13-.13h4.74a.13.13 0 0 1 .13.13v19.74a.13.13 0 0 1-.13.13h-4.74a.13.13 0 0 1-.13-.13"
-          />
-        </svg>
+        <img
+          src="/images/em_contact_pattern.png"
+          alt="Emerald English logo pattern"
+          class="contact-pattern w-full h-full object-contain opacity-0 hover:opacity-100"
+        />
       </div>
     </div>
     <div
       v-show="showLightBox"
-      class="flex justify-center items-center absolute inset w-full h-screen top-0 bg-black md:bg-transparent"
+      class="flex justify-center items-center absolute inset w-full h-screen top-0 bg-black md:bg-tint"
     >
       <div
         class="flex justify-between items-center bg-black max-w-4xl max-h-80vh w-full h-full relative"
@@ -41,7 +36,19 @@
           @click="showPrev"
           class="absolute md:static bottom-0 mx-4 text-white text-3xl font-bold"
         >
-          &larr;
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32.19 89.36"
+            class="h-12 stroke-current text-white"
+            style="transform: scale(-1,1)"
+          >
+            <path
+              fill="none"
+              stroke-miterlimit="10"
+              stroke-width="4px"
+              d="M1.68 1.08l28.13 43.6L1.68 88.27"
+            />
+          </svg>
         </button>
         <div
           class="flex justify-center items-center flex-1 h-full max-h-full overflow-hidden"
@@ -51,6 +58,7 @@
             <img
               v-if="currentIndex !== imageCount"
               class="max-w-full max-h-full"
+              :class="{'opacity-0': showLightBox === false}"
               :key="lightBoxImg"
               :src="lightBoxImg"
               alt
@@ -81,14 +89,33 @@
           @click="showNext"
           class="absolute md:static bottom-0 right-0 mx-4 text-white text-3xl font-bold"
         >
-          &rarr;
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32.19 89.36"
+            class="h-12 stroke-current text-white"
+          >
+            <path
+              fill="none"
+              stroke-miterlimit="10"
+              stroke-width="4px"
+              d="M1.68 1.08l28.13 43.6L1.68 88.27"
+            />
+          </svg>
         </button>
         <button
           type="button"
           @click="closeLightBox"
           class="bg-none text-3xl text-white font-bold absolute top-0 right-0 m-8"
         >
-          &times;
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 29.83 29.83"
+            class="h-4 stroke-current text-white"
+          >
+            <g data-name="Light Box" fill="none" stroke-miterlimit="10" stroke-width="4px">
+              <path d="M1.41 1.41l27 27M28.41 1.41l-27 27" />
+            </g>
+          </svg>
         </button>
       </div>
     </div>
@@ -112,7 +139,7 @@ export default {
       showLightBox: false,
       currentIndex: 0,
       images: gallery,
-      slideDirection: "slide",
+      slideDirection: "",
       scrollPos: 0
     };
   },
@@ -207,5 +234,9 @@ export default {
 <style scoped>
 button:disabled {
   @apply opacity-25;
+}
+
+.contact-pattern {
+  transition: opacity 0.3s;
 }
 </style>

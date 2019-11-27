@@ -5,7 +5,9 @@ module.exports = {
         "120": "40rem"
       },
       colors: {
-        black: "#2D262B"
+        tint: "rgba(0,0,0,.5)",
+        black: "#2D262B",
+        deep_green: "#254d3f"
       },
       maxHeight: {
         "4/5": "80%",

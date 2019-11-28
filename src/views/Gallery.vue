@@ -171,9 +171,18 @@ export default {
     const hammertime = new Hammer(this.$refs.lightbox);
 
     hammertime.on("swipe", this.handleSwipe);
+
+    this.preloadImages();
   },
 
   methods: {
+    preloadImages() {
+      this.images.forEach(image => {
+        const img = new Image();
+        img.src = image.full;
+      });
+    },
+
     handleKey({ key }) {
       switch (key) {
         case "ArrowRight":
@@ -189,7 +198,7 @@ export default {
     },
 
     handleSwipe({ deltaX }) {
-      if (deltaX < 0) {
+      if (deltaX > 0) {
         return this.showNext();
       }
 

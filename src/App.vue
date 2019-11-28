@@ -26,7 +26,9 @@ body {
 
 @media screen and (max-width: 600px) {
   .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

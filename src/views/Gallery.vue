@@ -4,13 +4,13 @@
       <full-logo class="text-black hover:text-deep_green h-8"></full-logo>
     </router-link>
     <div class="gallery-grid max-w-4xl mx-auto mt-20 lg:mt-0">
-      <div v-for="(img, index) in images" :key="index" class="bg-black">
+      <div v-for="(img, index) in images" :key="index" class="bg-black relative">
         <transition name="fade">
           <img
             @click="setLightBox(index)"
             v-show="img.ready"
             @load="img.ready = true"
-            class="object-fit w-full h-full absolute top-0"
+            class="object-fit h-full w-full absolute top-0"
             :src="img.thumb"
             alt
           />
@@ -217,6 +217,7 @@ export default {
       document.body.classList.remove("overflow-hidden");
       document.documentElement.scrollTop = this.scrollPos;
       this.showLightBox = false;
+      this.slideDirection = "";
     },
 
     showNext() {

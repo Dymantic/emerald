@@ -18,6 +18,7 @@
       </div>
       <div class="bg-black h-full flex justify-center items-center">
         <img
+          @click="setLightBox(images.length)"
           src="/images/em_contact_pattern.png"
           alt="Emerald English logo pattern"
           class="contact-pattern w-full h-full object-contain opacity-0 hover:opacity-100"

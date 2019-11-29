@@ -4,13 +4,13 @@
       <full-logo class="text-black hover:text-deep_green h-8"></full-logo>
     </router-link>
     <div class="gallery-grid w-full max-w-4xl mx-auto mt-20 lg:mt-0">
-      <div v-for="(img, index) in images" :key="index" class="bg-black relative">
+      <div v-for="(img, index) in images" :key="index" class="bg-black relative overflow-hidden">
         <transition name="fade">
           <img
             @click="setLightBox(index)"
             v-show="img.ready"
             @load="img.ready = true"
-            class="object-fit h-full w-full absolute top-0"
+            class="object-fit h-full w-full absolute top-0 cursor-pointer thumb"
             :src="img.thumb"
             alt
           />
@@ -21,7 +21,7 @@
           @click="setLightBox(images.length)"
           src="/images/em_contact_pattern.png"
           alt="Emerald English logo pattern"
-          class="contact-pattern w-full h-full object-contain opacity-0 hover:opacity-100"
+          class="contact-pattern w-full h-full object-contain opacity-0 hover:opacity-100 cursor-pointer"
         />
       </div>
     </div>
@@ -249,5 +249,13 @@ button:disabled {
 
 .contact-pattern {
   transition: opacity 0.3s;
+}
+
+.thumb {
+  transition: transform 1s;
+}
+
+.thumb:hover {
+  transform: scale(1.3);
 }
 </style>

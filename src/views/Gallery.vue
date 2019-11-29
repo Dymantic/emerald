@@ -3,7 +3,7 @@
     <router-link to="/" class="p-6 block absolute top-0 left-0">
       <full-logo class="text-black hover:text-deep_green h-8"></full-logo>
     </router-link>
-    <div class="gallery-grid max-w-4xl mx-auto mt-20 lg:mt-0">
+    <div class="gallery-grid w-full max-w-4xl mx-auto mt-20 lg:mt-0">
       <div v-for="(img, index) in images" :key="index" class="bg-black relative">
         <transition name="fade">
           <img

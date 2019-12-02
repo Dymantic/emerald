@@ -47,35 +47,23 @@ body {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: transform 0.5s;
+  transition: 0.5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  transform: scale(0);
+  opacity: 0;
 }
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: transform 0.3s;
-  transform: translate3d(0, 0, 0);
+  transition: opacity 0.5s;
+  /* transform: translate3d(0, 0, 0); */
 }
 .slide-enter /* .fade-leave-active below version 2.1.8 */ {
-  transform: translate3d(-180%, 0, 0);
+  /* transform: translate3d(-180%, 0, 0); */
+  opacity: 0;
 }
 
 .slide-leave-to {
   transform: translate3d(180%, 0, 0);
-}
-
-.slide-right-enter-active,
-.slide-right-leave-active {
-  transition: transform 0.3s;
-  transform: translate3d(0, 0, 0);
-}
-.slide-right-enter /* .fade-leave-active below version 2.1.8 */ {
-  transform: translate3d(130%, 0, 0);
-}
-
-.slide-right-leave-to {
-  transform: translate3d(-130%, 0, 0);
 }
 </style>

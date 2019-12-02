@@ -35,7 +35,7 @@
         <button
           :disabled="!hasPrev"
           @click="showPrev"
-          class="absolute md:static bottom-0 mx-4 text-white text-3xl font-bold"
+          class="absolute md:static bottom-0 mx-4 text-white text-3xl font-bold scale-on-hover"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +88,7 @@
         <button
           :disabled="!hasNext"
           @click="showNext"
-          class="absolute md:static bottom-0 right-0 mx-4 text-white text-3xl font-bold"
+          class="absolute md:static bottom-0 right-0 mx-4 text-white text-3xl font-bold scale-on-hover"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +106,7 @@
         <button
           type="button"
           @click="closeLightBox"
-          class="bg-none text-3xl text-white font-bold absolute top-0 right-0 m-8"
+          class="bg-none text-3xl text-white font-bold absolute top-0 right-0 m-8 scale-on-hover"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -231,7 +231,7 @@ export default {
     },
 
     showPrev() {
-      this.slideDirection = "slide-right";
+      this.slideDirection = "slide";
       if (this.currentIndex === 0) {
         return;
       }
@@ -252,10 +252,18 @@ button:disabled {
 }
 
 .thumb {
-  transition: transform 1s;
+  transition: 0.7s;
 }
 
 .thumb:hover {
   transform: scale(1.3);
+}
+
+.scale-on-hover {
+  transition: 0.3s;
+}
+
+.scale-on-hover:hover {
+  transform: scale(1.2);
 }
 </style>

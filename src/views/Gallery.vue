@@ -52,7 +52,7 @@
           </svg>
         </button>
         <div
-          class="flex justify-center items-center flex-1 h-full max-h-full overflow-hidden"
+          class="flex justify-center items-center flex-1 h-full max-h-full overflow-hidden relative"
           ref="lightbox"
         >
           <transition name="fade">
@@ -140,7 +140,6 @@ export default {
       showLightBox: false,
       currentIndex: 0,
       images: gallery,
-      slideDirection: "",
       scrollPos: 0
     };
   },
@@ -174,6 +173,21 @@ export default {
     hammertime.on("swipe", this.handleSwipe);
 
     this.preloadImages();
+  },
+
+  watch: {
+    $route(to) {
+      if (
+        (to.query.lightbox === "false" || !to.query.lightbox) &&
+        this.showLightBox
+      ) {
+        return this.closeLightBox();
+      }
+
+      if (to.query.lightbox === "true" && !this.showLightBox) {
+        this.$router.replace({ path: "gallery", query: { lightbox: false } });
+      }
+    }
   },
 
   methods: {
@@ -212,6 +226,7 @@ export default {
       document.body.classList.add("overflow-hidden");
       this.currentIndex = index;
       this.showLightBox = true;
+      this.$router.push({ path: "gallery", query: { lightbox: true } });
     },
 
     closeLightBox() {
@@ -219,10 +234,12 @@ export default {
       document.documentElement.scrollTop = this.scrollPos;
       this.showLightBox = false;
       this.slideDirection = "";
+      if (this.$route.query.lightbox) {
+        this.$router.back();
+      }
     },
 
     showNext() {
-      this.slideDirection = "slide";
       if (this.currentIndex === this.imageCount) {
         return;
       }
@@ -231,7 +248,6 @@ export default {
     },
 
     showPrev() {
-      this.slideDirection = "slide";
       if (this.currentIndex === 0) {
         return;
       }

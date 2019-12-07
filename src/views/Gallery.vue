@@ -55,10 +55,10 @@
           class="flex justify-center items-center flex-1 h-full max-h-full overflow-hidden"
           ref="lightbox"
         >
-          <transition :name="slideDirection" mode="out-in">
+          <transition name="fade">
             <img
               v-if="currentIndex !== imageCount"
-              class="max-w-full max-h-full"
+              class="max-w-full max-h-full absolute"
               :class="{'opacity-0': showLightBox === false}"
               :key="lightBoxImg"
               :src="lightBoxImg"

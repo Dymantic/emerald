@@ -1,7 +1,7 @@
 <template>
   <div class="h-full relative flex flex-col justify-center items-center">
     <router-link to="/" class="p-6 block absolute top-0 left-0">
-      <full-logo class="text-black hover:text-deep_green h-8"></full-logo>
+      <full-logo class="text-black hover:text-grey h-8"></full-logo>
     </router-link>
     <div class="gallery-grid w-full max-w-4xl mx-auto mt-20 lg:mt-0">
       <div v-for="(img, index) in images" :key="index" class="bg-black relative overflow-hidden">
@@ -27,15 +27,15 @@
     </div>
     <div
       v-show="showLightBox"
-      class="flex justify-center items-center absolute inset w-full h-screen top-0 bg-black md:bg-tint"
+      class="flex justify-center items-center absolute inset w-full h-screen top-0 bg-black"
     >
       <div
-        class="flex justify-between items-center bg-black max-w-4xl max-h-80vh w-full h-full relative"
+        class="flex justify-between items-center bg-black max-w-4xl max-h-screen md:max-h-80vh w-full h-full relative"
       >
         <button
           :disabled="!hasPrev"
           @click="showPrev"
-          class="absolute md:static bottom-0 mx-4 text-white text-3xl font-bold scale-on-hover"
+          class="absolute md:static bottom-0 mx-4 text-white text-3xl font-bold scale-on-hover focus:outline-none"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +88,7 @@
         <button
           :disabled="!hasNext"
           @click="showNext"
-          class="absolute md:static bottom-0 right-0 mx-4 text-white text-3xl font-bold scale-on-hover"
+          class="absolute md:static bottom-0 right-0 mx-4 text-white text-3xl font-bold scale-on-hover focus:outline-none"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -103,22 +103,22 @@
             />
           </svg>
         </button>
-        <button
-          type="button"
-          @click="closeLightBox"
-          class="bg-none text-3xl text-white font-bold absolute top-0 right-0 m-8 scale-on-hover"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 29.83 29.83"
-            class="h-4 stroke-current text-white"
-          >
-            <g data-name="Light Box" fill="none" stroke-miterlimit="10" stroke-width="4px">
-              <path d="M1.41 1.41l27 27M28.41 1.41l-27 27" />
-            </g>
-          </svg>
-        </button>
       </div>
+      <button
+        type="button"
+        @click="closeLightBox"
+        class="bg-none text-3xl text-white font-bold absolute top-0 right-0 m-8 scale-on-hover focus:outline-none"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 29.83 29.83"
+          class="h-4 stroke-current text-white"
+        >
+          <g data-name="Light Box" fill="none" stroke-miterlimit="10" stroke-width="4px">
+            <path d="M1.41 1.41l27 27M28.41 1.41l-27 27" />
+          </g>
+        </svg>
+      </button>
     </div>
   </div>
 </template>

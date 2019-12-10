@@ -5,7 +5,7 @@ module.exports = {
         "120": "40rem"
       },
       colors: {
-        tint: "rgba(0,0,0,.5)",
+        tint: "rgba(45,38,43,.5)",
         black: "#2D262B",
         grey: "#746F6D",
         deep_green: "#254d3f"

@@ -32,25 +32,7 @@
       <div
         class="flex justify-between items-center bg-black max-w-4xl max-h-screen md:max-h-80vh w-full h-full relative"
       >
-        <button
-          :disabled="!hasPrev"
-          @click="showPrev"
-          class="absolute md:static rounded-full center-y z-50 mx-4 text-white text-3xl font-bold scale-on-hover focus:outline-none"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 32.19 89.36"
-            class="h-8 md:h-12 stroke-current text-white"
-            style="transform: scale(-1,1)"
-          >
-            <path
-              fill="none"
-              stroke-miterlimit="10"
-              stroke-width="4px"
-              d="M1.68 1.08l28.13 43.6L1.68 88.27"
-            />
-          </svg>
-        </button>
+        <prev-button :disable="!hasPrev" @click.native="showPrev"></prev-button>
         <div
           class="flex justify-center items-center flex-1 h-full max-h-full overflow-hidden relative"
           ref="lightbox"
@@ -64,67 +46,25 @@
               :src="lightBoxImg"
               alt
             />
-            <div
-              v-if="currentIndex === imageCount"
-              class="w-full h-full max-h-4/5 text-white flex flex-col justify-center items-center"
-            >
-              <h3 class="text-2xl font-bold mb-8">Opening Hours</h3>
-              <p class="text-lg font-bold mb-2">Spring/Autumn Semester</p>
-              <p>Mon: 12:15 - 21:00</p>
-              <p>Tue: 15:00 - 21:00</p>
-              <p>Wed: 12:15 - 20:00</p>
-              <p>Thurs: 12:15 - 21:00</p>
-              <p>Fri: 12:15 - 21:00</p>
-
-              <p class="mt-6 text-lg font-bold">Summer/Winter Camp</p>
-              <p>Mon to Fri: 08:30 - 18:30</p>
-
-              <p class="mt-6 text-lg font-bold">Contact</p>
-              <p>042 2522 6012</p>
-              <p>emeraldfengyuan@gmail.com</p>
-            </div>
+            <contact-details v-if="currentIndex === imageCount"></contact-details>
           </transition>
         </div>
-        <button
-          :disabled="!hasNext"
-          @click="showNext"
-          class="absolute md:static center-y right-0 mx-4 text-white text-3xl font-bold scale-on-hover focus:outline-none"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 32.19 89.36"
-            class="h-8 md:h-12 stroke-current text-white"
-          >
-            <path
-              fill="none"
-              stroke-miterlimit="10"
-              stroke-width="4px"
-              d="M1.68 1.08l28.13 43.6L1.68 88.27"
-            />
-          </svg>
-        </button>
+        <next-button :disable="!hasNext" @click.native="showNext"></next-button>
       </div>
-      <button
-        type="button"
-        @click="closeLightBox"
-        class="bg-none text-3xl text-white font-bold absolute top-0 right-0 m-8 scale-on-hover focus:outline-none"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 29.83 29.83"
-          class="h-4 stroke-current text-white"
-        >
-          <g data-name="Light Box" fill="none" stroke-miterlimit="10" stroke-width="4px">
-            <path d="M1.41 1.41l27 27M28.41 1.41l-27 27" />
-          </g>
-        </svg>
-      </button>
+      <p
+        class="absolute top-0 center-x mt-2 bg-tint text-white p-2 font-bold"
+      >{{ lightboxPosition }}</p>
+      <close-button @click.native="closeLightBox"></close-button>
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import ContactDetails from "@/components/ContactDetails";
+import NextButton from "@/components/NextButton";
+import PrevButton from "@/components/PrevButton";
+import CloseButton from "@/components/CloseButton";
 import FullLogo from "@/components/Logo";
 import gallery from "@/data/images";
 import Hammer from "hammerjs";
@@ -132,7 +72,11 @@ import Hammer from "hammerjs";
 export default {
   name: "home",
   components: {
-    FullLogo
+    FullLogo,
+    ContactDetails,
+    NextButton,
+    PrevButton,
+    CloseButton
   },
 
   data() {
@@ -159,6 +103,10 @@ export default {
 
     hasPrev() {
       return this.currentIndex > 0;
+    },
+
+    lightboxPosition() {
+      return `${this.currentIndex + 1} of ${this.images.length + 1}`;
     }
   },
 
@@ -288,5 +236,10 @@ button:disabled {
 .center-y {
   top: 50%;
   transform: translateY(-50%);
+}
+
+.center-x {
+  left: 50%;
+  transform: translateX(-50%);
 }
 </style>

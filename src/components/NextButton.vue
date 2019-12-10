@@ -1,6 +1,5 @@
 <template>
   <button
-    :disabled="disable"
     class="absolute md:static center-y right-0 mx-4 text-white text-3xl font-bold scale-on-hover focus:outline-none"
   >
     <svg
@@ -19,7 +18,5 @@
 </template>
 
 <script>
-export default {
-  props: ["disable"]
-};
+export default {};
 </script>

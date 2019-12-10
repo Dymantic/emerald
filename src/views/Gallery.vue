@@ -32,7 +32,7 @@
       <div
         class="flex justify-between items-center bg-black max-w-4xl max-h-screen md:max-h-80vh w-full h-full relative"
       >
-        <prev-button :disable="!hasPrev" @click.native="showPrev"></prev-button>
+        <prev-button @click.native="showPrev"></prev-button>
         <div
           class="flex justify-center items-center flex-1 h-full max-h-full overflow-hidden relative"
           ref="lightbox"
@@ -49,7 +49,7 @@
             <contact-details v-if="currentIndex === imageCount"></contact-details>
           </transition>
         </div>
-        <next-button :disable="!hasNext" @click.native="showNext"></next-button>
+        <next-button @click.native="showNext"></next-button>
       </div>
       <p
         class="absolute top-0 center-x mt-2 bg-tint text-white p-2 font-bold"
@@ -95,14 +95,6 @@ export default {
 
     imageCount() {
       return this.images.length;
-    },
-
-    hasNext() {
-      return this.currentIndex < this.imageCount;
-    },
-
-    hasPrev() {
-      return this.currentIndex > 0;
     },
 
     lightboxPosition() {
@@ -189,7 +181,7 @@ export default {
 
     showNext() {
       if (this.currentIndex === this.imageCount) {
-        return;
+        return (this.currentIndex = 0);
       }
 
       this.currentIndex++;
@@ -197,7 +189,7 @@ export default {
 
     showPrev() {
       if (this.currentIndex === 0) {
-        return;
+        return (this.currentIndex = this.imageCount);
       }
 
       this.currentIndex--;

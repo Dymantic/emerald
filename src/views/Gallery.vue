@@ -3,7 +3,7 @@
     <router-link to="/" class="p-6 block absolute top-0 left-0">
       <full-logo class="text-black hover:text-grey h-8"></full-logo>
     </router-link>
-    <div class="gallery-grid w-full max-w-4xl mx-auto mt-20 lg:mt-0">
+    <div class="gallery-grid w-full max-w-4xl mx-auto mt-20 lg:mt-0 p-4 md:p-0">
       <div v-for="(img, index) in images" :key="index" class="bg-black relative overflow-hidden">
         <transition name="fade">
           <img
@@ -35,12 +35,12 @@
         <button
           :disabled="!hasPrev"
           @click="showPrev"
-          class="absolute md:static bottom-0 mx-4 text-white text-3xl font-bold scale-on-hover focus:outline-none"
+          class="absolute md:static rounded-full center-y z-50 mx-4 text-white text-3xl font-bold scale-on-hover focus:outline-none"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32.19 89.36"
-            class="h-12 stroke-current text-white"
+            class="h-8 md:h-12 stroke-current text-white"
             style="transform: scale(-1,1)"
           >
             <path
@@ -88,12 +88,12 @@
         <button
           :disabled="!hasNext"
           @click="showNext"
-          class="absolute md:static bottom-0 right-0 mx-4 text-white text-3xl font-bold scale-on-hover focus:outline-none"
+          class="absolute md:static center-y right-0 mx-4 text-white text-3xl font-bold scale-on-hover focus:outline-none"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32.19 89.36"
-            class="h-12 stroke-current text-white"
+            class="h-8 md:h-12 stroke-current text-white"
           >
             <path
               fill="none"
@@ -280,6 +280,13 @@ button:disabled {
 }
 
 .scale-on-hover:hover {
-  transform: scale(1.2);
+  @media screen and (min-width: 700px;) {
+    transform: scale(1.2);
+  }
+}
+
+.center-y {
+  top: 50%;
+  transform: translateY(-50%);
 }
 </style>

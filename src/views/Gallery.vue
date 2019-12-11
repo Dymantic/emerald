@@ -51,9 +51,7 @@
         </div>
         <next-button @click.native="showNext"></next-button>
       </div>
-      <p
-        class="absolute top-0 center-x mt-2 bg-tint text-white p-2 font-bold"
-      >{{ lightboxPosition }}</p>
+      <p class="absolute top-0 center-x mt-2 bg-tint text-white p-2 text-sm">{{ lightboxPosition }}</p>
       <close-button @click.native="closeLightBox"></close-button>
     </div>
   </div>

@@ -217,12 +217,6 @@ button:disabled {
   transition: 0.3s;
 }
 
-.scale-on-hover:hover {
-  @media screen and (min-width: 700px;) {
-    transform: scale(1.2);
-  }
-}
-
 .center-y {
   top: 50%;
   transform: translateY(-50%);

@@ -7,7 +7,7 @@ module.exports = {
       colors: {
         tint: "rgba(45,38,43,.5)",
         black: "#2D262B",
-        grey: "#746F6D",
+        grey: "#545459",
         deep_green: "#254d3f"
       },
       maxHeight: {

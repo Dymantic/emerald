@@ -1,6 +1,6 @@
 <template>
   <button
-    class="absolute md:static center-y right-0 mx-4 text-white text-3xl font-bold scale-on-hover focus:outline-none"
+    class="absolute md:static center-y right-0 mx-4 text-white text-3xl font-bold next focus:outline-none"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20,3 +20,13 @@
 <script>
 export default {};
 </script>
+
+<style scoped>
+.next {
+  transition: 0.3s;
+}
+
+.next:hover {
+  transform: translateY(-50%) scale(1.2);
+}
+</style>

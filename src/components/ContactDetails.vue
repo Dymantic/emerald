@@ -12,7 +12,7 @@
     <p>Mon to Fri: 08:30 - 18:30</p>
 
     <p class="mt-6 text-lg font-bold">Contact</p>
-    <p>042 2522 6012</p>
+    <p>04 2522 6012</p>
     <p>emeraldfengyuan@gmail.com</p>
   </div>
 </template>
